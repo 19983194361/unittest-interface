@@ -1,18 +1,24 @@
 import unittest
+from utils.common import get_case_data
 
 
 class TestLogin(unittest.TestCase):
 
-    def test_first(self):
-        """
-        打印第一个测试用例
-        :return: None
-        """
-        print("第一")
+    cases_data = get_case_data('login.yaml')
 
-    def test_2(self):
+    def test_login_success(self):
         """
-        打印第二个测试用例
+        登录成功
         :return: None
         """
-        print("2")
+        # 第一步：获取用例数据
+        # 第二步：请求接口，获取响应
+        # 第三步：断言结果
+        print(self.cases_data['normal'])
+
+    def test_login_fail(self):
+        """
+        登录失败
+        :return: None
+        """
+        print(self.cases_data['except'])
