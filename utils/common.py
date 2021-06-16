@@ -1,6 +1,5 @@
 import time
-import yaml
-from utils.path import REPORT_DIR, CONFIG_DIR, DATA_DIR
+from utils.path import REPORT_DIR
 
 
 class Temporary:
@@ -8,29 +7,6 @@ class Temporary:
     临时类，用于存储用例执行过程中的属性值
     """
     pass
-
-
-def get_case_data(filename):
-    """
-    读取用例数据集并返回
-    :param filename: 数据保存文件名称
-    :return: 用例数据集
-    """
-    data_file = DATA_DIR + '\\' + filename
-    with open(file=data_file, mode='r', encoding='utf-8') as f:
-        return yaml.load(stream=f, Loader=yaml.FullLoader)
-
-
-def get_config(section=None):
-    """
-    从配置文件中读取详细配置信息
-    :param section: 配置项名称
-    :return: 配置项内容
-    """
-    conf_file = CONFIG_DIR + '\\' + 'conf.yaml'
-    with open(file=conf_file, mode='r', encoding='utf-8') as f:
-        conf_content = yaml.load(stream=f, Loader=yaml.FullLoader)
-        return conf_content[section]
 
 
 def get_current_time():

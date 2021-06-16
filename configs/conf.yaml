@@ -1,6 +1,15 @@
+# 接口请求公共url
 environment:
   base_url: http://www.suanmiao.site:8888/
 
+# 用例数据文件类型
+# file_type可选：excel、yaml、py、sql 四种
+# file_name为对应的文件名，当file_type为sql时，file_name为表名
+data_source:
+  file_type: excel
+  file_name: platform.xlsx
+
+# 数据库连接配置
 mysql:
   host: 127.0.0.1
   port: 3306

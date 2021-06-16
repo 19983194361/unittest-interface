@@ -1,8 +1,10 @@
 certifi==2021.5.30
 chardet==3.0.4
+et-xmlfile==1.1.0
 idna==2.10
 Jinja2==2.10.1
 MarkupSafe==2.0.1
+openpyxl==3.0.7
 PyYAML==5.3.1
 requests==2.24.0
 unittestreport==1.1.14
