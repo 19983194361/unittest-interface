@@ -7,9 +7,7 @@ from utils.path import LOG_DIR
 class HandleLog:
     # 读取日志收集等级配置
     level = get_config('log_level')
-
-    def __init__(self, user=None):
-        self.user = user
+    user = get_config('environment')['executor']
 
     def record_by_file(self):
         """
@@ -25,11 +23,11 @@ class HandleLog:
         file_handler.setLevel(level=self.level['file'])
         # 设置日志格式
         formatter = logging.Formatter(
-            fmt='%(asctime)s - %(name)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+            fmt='%(asctime)s - executor: %(name)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
 
         return logger
 
 
-logger = HandleLog('蒜苗').record_by_file()
+logger = HandleLog().record_by_file()

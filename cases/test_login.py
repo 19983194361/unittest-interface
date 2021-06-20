@@ -3,6 +3,7 @@ from ddt import ddt, data
 from utils.handle_data import data_obj
 from utils.handle_request import send
 from utils.handle_assert import assert_obj
+from utils.handle_log import logger
 
 
 @ddt
@@ -23,10 +24,15 @@ class TestLogin(unittest.TestCase):
         :return: None
         """
         name = case['name']
+        try:
+            logger.info('[{}]开始执行用例！'.format(name))
+            response = send(case=case)
+            logger.info('[{}]请求成功！'.format(name))
+        except Exception as e:
+            logger.error('[{}]请求失败！\r{}'.format(name, e))
+            raise e
 
-        response = send(case=case)
-
-        assert_obj.validate(expect=eval(case['expect']), actual=response)
+        assert_obj.validate(expect=eval(case['expect']), actual=response, name=name)
 
     @data(*cases['except'])
     def test_login_fail(self, case):
@@ -35,7 +41,12 @@ class TestLogin(unittest.TestCase):
         :return: None
         """
         name = case['name']
+        try:
+            logger.info('[{}]开始执行用例！'.format(name))
+            response = send(case=case)
+            logger.info('[{}]请求成功！'.format(name))
+        except Exception as e:
+            logger.error('[{}]请求失败！\r{}'.format(name, e))
+            raise e
 
-        response = send(case=case)
-
-        assert_obj.validate(expect=eval(case['expect']), actual=response)
+        assert_obj.validate(expect=eval(case['expect']), actual=response, name=name)
