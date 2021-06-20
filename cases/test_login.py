@@ -2,11 +2,17 @@ import unittest
 from ddt import ddt, data
 from utils.handle_data import data_obj
 from utils.handle_request import send
+from utils.handle_assert import assert_obj
 
 
 @ddt
 class TestLogin(unittest.TestCase):
-    """登录接口测试用例逻辑"""
+    """
+    登录接口测试用例逻辑
+    # first step：获取用例数据
+    # second step：请求接口，获取响应
+    # third step：断言结果
+    """
 
     cases = data_obj.get(sheet='login')
 
@@ -16,14 +22,12 @@ class TestLogin(unittest.TestCase):
         登录成功
         :return: None
         """
-        # first step：获取用例数据
         name = case['name']
         expect = eval(case['expect'])
-        # second step：请求接口，获取响应
+
         response = send(case=case)
-        # third step：断言结果
-        self.assertEqual(response['code'], expect['code'])
-        self.assertEqual(response['data']['username'], expect['username'])
+
+        assert_obj.validate(expect, response)
 
     @data(*cases['except'])
     def test_login_fail(self, case):
@@ -31,4 +35,9 @@ class TestLogin(unittest.TestCase):
         登录失败
         :return: None
         """
-        print(case)
+        name = case['name']
+        expect = eval(case['expect'])
+
+        response = send(case=case)
+
+        assert_obj.validate(expect, response)
