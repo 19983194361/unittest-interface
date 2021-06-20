@@ -11,3 +11,6 @@ CONFIG_DIR = os.path.join(BASE_DIR, r'configs')
 
 # 数据路径
 DATA_DIR = os.path.join(BASE_DIR, r'datas')
+
+# 日志路径
+LOG_DIR = os.path.join(BASE_DIR, r'logs')

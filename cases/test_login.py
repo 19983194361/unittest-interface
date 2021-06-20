@@ -23,11 +23,10 @@ class TestLogin(unittest.TestCase):
         :return: None
         """
         name = case['name']
-        expect = eval(case['expect'])
 
         response = send(case=case)
 
-        assert_obj.validate(expect, response)
+        assert_obj.validate(expect=eval(case['expect']), actual=response)
 
     @data(*cases['except'])
     def test_login_fail(self, case):
@@ -36,8 +35,7 @@ class TestLogin(unittest.TestCase):
         :return: None
         """
         name = case['name']
-        expect = eval(case['expect'])
 
         response = send(case=case)
 
-        assert_obj.validate(expect, response)
+        assert_obj.validate(expect=eval(case['expect']), actual=response)

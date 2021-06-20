@@ -15,3 +15,8 @@ mysql:
   port: 3306
   username: root
   password: 123456
+
+# 日志配置
+log_level:
+  global: DEBUG
+  file: INFO
