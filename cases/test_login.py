@@ -15,7 +15,8 @@ class TestLogin(unittest.TestCase):
     # third step：断言结果
     """
 
-    cases = data_obj.get(sheet='login')
+    cases = data_obj.get(file='platform.xlsx', sheet='login')
+    # cases = data_obj.get(file='login.py')
 
     @data(*cases['normal'])
     def test_login_success(self, case):
