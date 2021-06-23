@@ -20,6 +20,9 @@ class GetCaseData:
         elif file.endswith('.yaml'):
             data_file = DATA_DIR + '\\yaml\\' + file
             return self.get_yaml_data(data_file)
+        elif file.endswith('.txt'):
+            data_file = DATA_DIR + '\\txt\\' + file
+            return self.get_txt_data(data_file)
 
     def get_excel_data(self, filename=None, sheet=None):
         """
@@ -69,6 +72,22 @@ class GetCaseData:
 
         data = {'normal': [], 'except': []}
         for item in contents:
+            data['normal'].append(item) if item['type'] == 'normal' else data['except'].append(item)
+        return data
+
+    def get_txt_data(self, filename=None):
+        """
+        读取txt用例数据集并返回
+        :param filename: 数据保存txt文件名称
+        :return: 用例数据集
+        """
+        with open(file=filename, mode='r', encoding='utf-8') as f:
+            contents = f.readlines()
+        keys = eval(contents[0])
+
+        data = {'normal': [], 'except': []}
+        for values in contents[1:]:
+            item = dict(zip(keys, eval(values)))
             data['normal'].append(item) if item['type'] == 'normal' else data['except'].append(item)
         return data
 

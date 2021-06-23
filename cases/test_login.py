@@ -17,7 +17,8 @@ class TestLogin(unittest.TestCase):
 
     # cases = data_obj.get(file='platform.xlsx', sheet='login')
     # cases = data_obj.get(file='login.py')
-    cases = data_obj.get(file='login.yaml')
+    # cases = data_obj.get(file='login.yaml')
+    cases = data_obj.get(file='login.txt')
 
     @data(*cases['normal'])
     def test_login_success(self, case):
