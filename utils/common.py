@@ -20,7 +20,7 @@ def get_current_time():
 def generate_report(report_name=None):
     """
     获取测试报告完整的路径与名称
-    若report_name参数不为空，则返回用户定义的报告名称
+    若report_name参数不为空，则返回用户自定义的报告名称
     若report_name参数为空，则返回默认的报告名称
     :param report_name: 用户传参
     :return: 报告路径与名称

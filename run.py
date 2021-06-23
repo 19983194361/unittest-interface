@@ -2,7 +2,7 @@ import unittest
 from unittestreport import TestRunner
 from utils.common import generate_report
 
-# first step: collect case
+# first step: create suite and collect case
 suite = unittest.defaultTestLoader.discover(r'cases')
 
 # second step: statement run object, config suite and report param
@@ -12,5 +12,5 @@ runner = TestRunner(suite=suite,
                     tester='蒜苗',
                     desc='测试平台接口自动化执行报告')
 
-# third step: run case
+# third step: start to run case
 runner.run()
