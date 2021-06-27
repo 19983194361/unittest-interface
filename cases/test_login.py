@@ -20,6 +20,12 @@ class TestLogin(unittest.TestCase):
     # cases = data_obj.get(file='login.yaml')
     cases = data_obj.get(file='login.txt')
 
+    def setUpClass(cls):
+        pass
+
+    def setUp(self):
+        pass
+
     @data(*cases['normal'])
     def test_login_success(self, case):
         """
@@ -53,3 +59,9 @@ class TestLogin(unittest.TestCase):
             raise e
 
         assert_obj.validate(expect=eval(case['expect']), actual=response, name=name)
+
+    def tearDown(self):
+        pass
+
+    def tearDownClass(cls):
+        pass
